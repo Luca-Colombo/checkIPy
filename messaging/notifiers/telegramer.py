@@ -21,13 +21,18 @@ class TelegramNotifier:
             logging.error("Unauthorized. Check your Telegram credentials.")
             return
 
-        bot_updates = bot.getUpdates()
-        if not bot_updates or not bot_updates[-1].message.chat_id:
-            logging.error("We need your telegram chat id. Please, send any message to your bot.")
-            return
+        # bot_updates = bot.getUpdates()
+        # for update in bot_updates:
+        #     logging.debug("USER ID : " + str(update.message.from_user.username))
+        #     logging.debug("CHAT ID : " + str(update.message.chat_id))
+        # if bot.getChat(16740022).username == "luca_cipi":
+        #         logging.debug("TROVATA")
+        # if not bot_updates or not bot_updates[-1].message.chat_id:
+        #     logging.error("We need your telegram chat id. Please, send any message to your bot.")
+        #     return
 
         try:
-            bot.sendMessage(chat_id=bot_updates[-1].message.chat_id,
+            bot.sendMessage(chat_id=settings.TELEGRAM_CHAT_ID,
                             text=self.device_name + message)
         except telegram.TelegramError:
             logging.error("An error raised sending the Telegram message. " +

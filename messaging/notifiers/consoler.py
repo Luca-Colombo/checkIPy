@@ -1,4 +1,4 @@
 class ConsoleNotifier:
 
     def notify(self, message):
-        print message
+        print(message)

@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 import argparse
 import sys
-import urllib2
+from urllib.request import urlopen
+#import urllib2  only in python2 not in python3 it's replaced by the preceiding line
 
 import dbManager
 import settings
@@ -45,7 +46,7 @@ def get_message(current_ip, change):
 
 
 def get_ip():
-    return urllib2.urlopen(settings.IP_SOURCE).read()
+    return urlopen(settings.IP_SOURCE).read().decode('UTF-8')
 
 
 if __name__ == "__main__":

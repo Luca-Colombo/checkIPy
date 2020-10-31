@@ -24,7 +24,7 @@ def insert_or_replace_data(key, value):
     with sqlite3.connect(settings.DB_FILE_NAME) as conn:
         if is_new: create_db(conn)
         now = datetime.datetime.now()
-        conn.execute("insert or replace into data (key, value, date) values ('{}', '{}', '{}')".format(
+        conn.execute("insert or replace into data (key, value, date) values (?, ?, ?)", (
                         key,
                         value,
                         now.strftime("%Y-%m-%d %H:%M:%S")))
@@ -45,3 +45,9 @@ def update_ip(ip):
 
 def get_last_ip():
     return read_data('ip')
+
+def update_telegram_chatId(userId):
+    insert_or_replace_data("telegram_chat_id", userId)
+
+def get_telegram_chatId():
+    return read_data("telegram_chat_id")
