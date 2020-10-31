@@ -3,7 +3,7 @@ Python script that sends you an email or a [Telegram](https://telegram.org/) mes
 
 Inspired in [checkIP](https://github.com/gexplorer/checkIP) project.
 
-*Only tested using Python 2.7.10*
+*Only tested using Python 3*
 
 ## Installation
 If you want to work with virtual environments:
@@ -55,6 +55,7 @@ You should create your own bot and include in the configuration file your **bot 
 ```python
 # Telegram Bot
 TELEGRAM_TOKEN='your_bot_token'
+TELEGRAM_CHAT_ID='the_bot_chat_id'
 ```
 
 The app needs to know the chat id, so you must send a message to your bot in order to start working.
